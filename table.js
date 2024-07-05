@@ -45,9 +45,7 @@ window.onload = () => {
       editvalue = id;
       window.location.href = "form.html?id=" + id;
   }
-  function back(){
-    window.location.replace('form.html');
-  }
+ 
   function add(){
     window.location.replace('form.html');
   }

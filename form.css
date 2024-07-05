@@ -6,6 +6,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+ 
 }
 
 :root {
@@ -18,23 +19,33 @@
 body {
   display: flex;
   height: 100vh;
-  justify-content: center; /*center vertically */
-  align-items: center; /* center horizontally */
+  justify-content: center; 
+  align-items: center; 
   background: linear-gradient(135deg, var(--main-blue), var(--main-purple));
-  /* padding: 10px; */
+  /* padding-top: 160px; */
+  width: 1100px;
+  padding-left: 340px;
+  /* margin-top: -100px; */
+  
 }
 /* container and form */
 .container {
-  max-width: 700px;
-  width: 100%;
+  /* max-width: 900px; */
+  width: 180%;
+  height: 80%;
   background: #fff;
   padding: 25px 30px;
   border-radius: 5px;
+  padding-right: 120px;
+  /* justify-content: center;  */
+  /* align-items: center;  */
+  /* display: flex; */
 }
 .container .title {
   font-size: 25px;
   font-weight: 500;
   position: relative;
+  margin-left: 10px;
 }
 
 .container .title::before {
@@ -51,7 +62,9 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 20px 0 12px 0;
+  /* margin: 20px 0 19px 0; */
+  margin-left: 10px;
+  padding-top: 20px;
 }
 /* inside the form user details */
 form .user__details .input__box {
@@ -109,6 +122,10 @@ form .gender__details .category {
   border: 5px solid transparent;
   transition: all 0.3s ease;
 }
+.gender__title{
+  padding-left: 9px;
+  margin-left: 10px;
+}
 
 #dot-1:checked ~ .category .one,
 #dot-2:checked ~ .category .two,
@@ -124,7 +141,9 @@ form input[type="radio"] {
 /* submit button */
 form .button {
   height: 45px;
-  margin: 45px 0;
+  margin: 45px ;
+  margin-bottom: 10px;
+  margin-top: 40px;
 }
 
 form .button input {
@@ -143,6 +162,22 @@ form .button input {
 form .button input:hover {
   background: linear-gradient(-135deg, var(--main-blue), var(--main-purple));
 }
+
+  .girl{
+  margin-right: 190px;
+}
+.mozhi{
+  padding-left: 390px;
+  margin-top: -100px;
+}
+
+.gender__details{
+  margin-top: -20px;
+  margin-left: 10px;
+  
+}
+
+
 
 @media only screen and (max-width: 584px) {
   .container {
@@ -168,15 +203,4 @@ form .button input:hover {
   }
 }
 
- .lan{
-    margin-left: 670px;
-    margin-top: -90px;
- }
  
- .box{
-    margin-left: 670px;
-    /* margin-bottom: 80px; */
- }
- .girl{
-    margin-right: 190px;
- }
