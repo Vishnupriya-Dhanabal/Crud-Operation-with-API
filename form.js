@@ -1,7 +1,7 @@
 let editvalue;
 window.onload = () => {
     edit();
-};  
+};
 
 async function edit() {
     try {
@@ -29,9 +29,9 @@ async function edit() {
         document.getElementById("date").value = student.date;
 
         if (student.gender === "male") {
-            document.getElementById("dot-1").checked = true.gender;
+            document.getElementById("dot-1").checked = true;
         } else if (student.gender === "female") {
-            document.getElementById("dot-2").checked = true.gender;
+            document.getElementById("dot-2").checked = true;
         }
 
         const languageCheckboxes = document.querySelectorAll('input[name="language"]');
@@ -75,21 +75,21 @@ function validateForm() {
     } else {
         document.getElementById("num_req").textContent = "";
     }
-const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{5,20}$/;
 
-if (!passwordPattern.test(password)) {
-    document.getElementById("password_req").textContent = "Password must be 5-20 characters long, contain at least one uppercase letter, one lowercase letter, one digit, and one special character**";
-    isValid = false;
-} else {
-    document.getElementById("password_req").textContent = "";
-}
+    const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{5,20}$/;
+    if (!passwordPattern.test(password)) {
+        document.getElementById("password_req").textContent = "Password must be 5-20 characters long, contain at least one uppercase letter, one lowercase letter, one digit, and one special character**";
+        isValid = false;
+    } else {
+        document.getElementById("password_req").textContent = "";
+    }
 
-if (c_password !== password) {
-    document.getElementById("c_password_req").textContent = "Passwords do not match**";
-    isValid = false;
-} else {
-    document.getElementById("c_password_req").textContent = "";
-}
+    if (c_password !== password) {
+        document.getElementById("c_password_req").textContent = "Passwords do not match**";
+        isValid = false;
+    } else {
+        document.getElementById("c_password_req").textContent = "";
+    }
 
     if (!gender) {
         document.getElementById("gender_req").textContent = "Gender required**";
@@ -114,20 +114,7 @@ if (c_password !== password) {
 
     return isValid;
 }
-function validatePassword() {
-    var newPassword = document.getElementById('password').newPassword.value;
-    var minNumberofChars = 6;
-    var maxNumberofChars = 16;
-    var regularExpression  = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-    alert(newPassword); 
-    if(newPassword.length < minNumberofChars || newPassword.length > maxNumberofChars){
-        return false;
-    }
-    if(!regularExpression.test(newPassword)) {
-        alert("password should contain atleast one number and one special character");
-        return false;
-    }
-}
+
 
 function submitForm(event) {
     event.preventDefault();
@@ -153,9 +140,9 @@ function submitForm(event) {
 
 async function sendData(data) {
     try {
-        const apiUrl = editvalue? `https://6676a0e9145714a1bd725083.mockapi.io/student/${editvalue}`:"https://6676a0e9145714a1bd725083.mockapi.io/student";
-        
+        const apiUrl = editvalue ? `https://6676a0e9145714a1bd725083.mockapi.io/student/${editvalue}` : "https://6676a0e9145714a1bd725083.mockapi.io/student";
         const method = editvalue ? "PUT" : "POST";
+        
         const response = await fetch(apiUrl, {
             method,
             headers: { "Content-Type": "application/json" },
@@ -174,9 +161,16 @@ async function sendData(data) {
     }
 }
 
+
+function back(){
+    window.location.replace('table.html');
+  }
+
 // function cancel() {
 //     window.location.href = "table.html";
 // }
+
+
 
 
 
