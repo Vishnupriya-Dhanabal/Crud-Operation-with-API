@@ -27,12 +27,12 @@ window.onload = () => {
         k += "<tr>"
         k += "<td>" + student[i].name + "</td>"
         k += "<td>" + student[i].email + "</td>"
-        k += "<td>" + student[i].number + "</td>"
+        k += "<td>" + student[i].phone + "</td>"
         k += "<td>" + student[i].password+ "</td>"
-        k += "<td>" + student[i].c_password+ "</td>"
+        k += "<td>" + student[i].cpassword+ "</td>"
         k += "<td>" + student[i].gender+ "</td>"
         k += "<td>" + student[i].language+ "</td>"
-        k += "<td>" + student[i].date+ "</td>"
+        k += "<td>" + student[i].dob+ "</td>"
         k += '<td> <button type="button" class="btn btn-primary" onclick= "edit('+ student[i].id +')">Edit</button>   <button type="button" class="btn btn-danger" onclick= "Delete('+ student[i].id +')">Delete</button></td>';
         k += "</tr>"
       }

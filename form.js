@@ -1,4 +1,5 @@
 let editvalue;
+
 window.onload = () => {
     edit();
 };
@@ -23,10 +24,10 @@ async function edit() {
         const student = await response.json();
         document.getElementById("name").value = student.name;
         document.getElementById("email").value = student.email;
-        document.getElementById("number").value = student.number;
+        document.getElementById("phone").value = student.phone;
         document.getElementById("password").value = student.password;
-        document.getElementById("c_password").value = student.c_password;
-        document.getElementById("date").value = student.date;
+        document.getElementById("cpassword").value = student.cpassword;
+        document.getElementById("dob").value = student.dob;
 
         if (student.gender === "male") {
             document.getElementById("dot-1").checked = true;
@@ -38,6 +39,7 @@ async function edit() {
         languageCheckboxes.forEach(checkbox => {
             checkbox.checked = student.language.includes(checkbox.value);
         });
+
     } catch (error) {
         console.error('Error:', error);
     }
@@ -46,16 +48,17 @@ async function edit() {
 function validateForm() {
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
-    const number = document.getElementById("number").value.trim();
+    const phone = document.getElementById("phone").value.trim();
     const password = document.getElementById("password").value.trim();
-    const c_password = document.getElementById("c_password").value.trim();
+    const cpassword = document.getElementById("cpassword").value.trim();
     const gender = document.querySelector('input[name="gender"]:checked')?.value;
     const languages = Array.from(document.querySelectorAll('input[name="language"]:checked')).map(el => el.value);
-    const date = document.getElementById("date").value;
+    const dob = document.getElementById("dob").value;
     let isValid = true;
 
     if (name.length < 3) {
         document.getElementById("name_req").textContent = "Name required**";
+        document.getElementById("name_req").style.color = "red";
         isValid = false;
     } else {
         document.getElementById("name_req").textContent = "";
@@ -64,35 +67,40 @@ function validateForm() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         document.getElementById("email_req").textContent = "Email required**";
+        document.getElementById("email_req").style.color = "red";
         isValid = false;
     } else {
         document.getElementById("email_req").textContent = "";
     }
 
-    if (!/^\d{3}-\d{3}-\d{4}$/.test(number)) {
-        document.getElementById("num_req").textContent = "Number required**";
+    if (!/^\d{3}-\d{3}-\d{4}$/.test(phone)) {
+        document.getElementById("phone_req").textContent = "Number required**";
+        document.getElementById("phone_req").style.color = "red";
         isValid = false;
     } else {
-        document.getElementById("num_req").textContent = "";
+        document.getElementById("phone_req").textContent = "";
     }
 
     const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{5,20}$/;
     if (!passwordPattern.test(password)) {
-        document.getElementById("password_req").textContent = "Password must be 5-20 characters long, contain at least one uppercase letter, one lowercase letter, one digit, and one special character**";
+        document.getElementById("password_req").textContent = "Password required**";
+        document.getElementById("password_req").style.color = "red";
         isValid = false;
     } else {
         document.getElementById("password_req").textContent = "";
     }
 
-    if (c_password !== password) {
-        document.getElementById("c_password_req").textContent = "Passwords do not match**";
+    if (cpassword !== password) {
+        document.getElementById("cpassword_req").textContent = "Passwords do not match**";
+        document.getElementById("cpassword_req").style.color = "red";
         isValid = false;
     } else {
-        document.getElementById("c_password_req").textContent = "";
+        document.getElementById("cpassword_req").textContent = "";
     }
 
     if (!gender) {
         document.getElementById("gender_req").textContent = "Gender required**";
+        document.getElementById("gender_req").style.color = "red";
         isValid = false;
     } else {
         document.getElementById("gender_req").textContent = "";
@@ -100,21 +108,29 @@ function validateForm() {
 
     if (languages.length === 0) {
         document.getElementById("lang_req").textContent = "Language required**";
+        document.getElementById("lang_req").style.color = "red";
         isValid = false;
     } else {
         document.getElementById("lang_req").textContent = "";
     }
+    const dobPattern = /^\d{2}\?\d{2}\?\d{4}$/;
 
-    if (!date) {
-        document.getElementById("dob_req").textContent = "Date of birth required**";
-        isValid = false;
+    if (!dobPattern.test(dob)) {
+      document.getElementById("dob_req").textContent = 'Date of birth required**';
+      document.getElementById("dob_req").style.color = "red";
     } else {
-        document.getElementById("dob_req").textContent = "";
+      document.getElementById("dob_req").textContent = '';
     }
+
+    // if (!date) {
+    //     document.getElementById("dob_req").textContent = "Date of birth required**";
+    //     isValid = false;
+    // } else {
+    //     document.getElementById("dob_req").textContent = "";
+    // }
 
     return isValid;
 }
-
 
 function submitForm(event) {
     event.preventDefault();
@@ -126,13 +142,16 @@ function submitForm(event) {
     const studentData = {
         name: document.getElementById("name").value.trim(),
         email: document.getElementById("email").value.trim(),
-        number: document.getElementById("number").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
         password: document.getElementById("password").value.trim(),
-        c_password: document.getElementById("c_password").value.trim(),
+        cpassword: document.getElementById("cpassword").value.trim(),
         gender: document.querySelector('input[name="gender"]:checked')?.value,
         language: Array.from(document.querySelectorAll('input[name="language"]:checked')).map(el => el.value),
-        date: document.getElementById("date").value
+        dob: document.getElementById("dob").value
     };
+
+    // Log student data to the console
+    console.log('Student Data:', studentData);
 
     sendData(studentData);
     return false;
@@ -161,14 +180,11 @@ async function sendData(data) {
     }
 }
 
-
-function back(){
+function back() {
     window.location.replace('table.html');
-  }
+}
 
-// function cancel() {
-//     window.location.href = "table.html";
-// }
+
 
 
 

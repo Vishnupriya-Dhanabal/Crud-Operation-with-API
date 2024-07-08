@@ -16,33 +16,33 @@
             <div class="user__details">
                 <div class="input__box">
                     <label for="name" class="details">Username</label>
-                    <input type="text" id="name" placeholder="ENTER YOUR NAME" required>
+                    <input type="text" id="name" placeholder="ENTER YOUR NAME">
                     <div id="name_req" class="error-message"></div>
                 </div>
                 <div class="input__box">
                     <label for="email" class="detail"><h6>Email</h6></label>
-                    <input type="email" id="email" placeholder="johns@hotmail.com" required>
+                    <input type="email" id="email" placeholder="johns@hotmail.com">
                     <div id="email_req" class="error-message"></div>
                 </div>
                 <div class="input__box">
                     <label for="number" class="details"><h6>Phone Number</h6></label>
-                    <input type="tel" id="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="012-345-6789" required>
-                    <div id="num_req" class="error-message"></div>
+                    <input type="tel" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="012-345-6789">
+                    <div id="phone_req" class="error-message"></div>
                 </div>
                 <div class="input__box">
                     <label for="date" class="detail"><h6>Date Of Birth</h6></label>
-                    <input type="date" id="date" required>
+                    <input type="text" id="dob" placeholder="mm?dd?yyyy">
                     <div id="dob_req" class="error-message"></div>
                 </div>
                 <div class="input__box">
                     <label for="password" class="details">Password</label>
-                    <input type="password" id="password" placeholder="********" required onchange="validatePassword()">
+                    <input type="password" id="password" placeholder="********" >
                     <div id="password_req" class="error-message"></div>
                 </div>
                 <div class="input__box">
                     <label for="c_password" class="detail"><h6>Confirm Password</h6></label>
-                    <input type="password" id="c_password" placeholder="********" required>
-                    <div id="c_password_req" class="error-message"></div>
+                    <input type="password" id="cpassword" placeholder="********" >
+                    <div id="cpassword_req" class="error-message"></div>
                 </div>
             </div>
            
