@@ -122,13 +122,6 @@ function validateForm() {
       document.getElementById("dob_req").textContent = '';
     }
 
-    // if (!date) {
-    //     document.getElementById("dob_req").textContent = "Date of birth required**";
-    //     isValid = false;
-    // } else {
-    //     document.getElementById("dob_req").textContent = "";
-    // }
-
     return isValid;
 }
 
